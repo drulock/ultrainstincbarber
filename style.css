@@ -387,3 +387,74 @@ textarea,
         padding: 60px 20px;
     }
 }
+/* --- ESTILOS PARA EL EFECTO FLIP-CARD --- */
+
+/* 1. Contenedor principal de la tarjeta.
+   Añadimos 'perspective' para crear el efecto 3D. */
+.service-card {
+    background-color: transparent; /* El fondo ahora lo tienen las caras */
+    height: 300px; /* Damos una altura fija para que todas sean iguales */
+    perspective: 1000px; /* ¡La propiedad clave para el 3D! */
+    border: none; /* Quitamos el borde que le pusimos antes */
+}
+.service-card:hover {
+    transform: none; /* Quitamos el efecto de elevación anterior */
+    box-shadow: none; /* Y la sombra */
+}
+
+
+/* 2. El 'escenario' que gira. Ocupa todo el espacio de la tarjeta.
+   Este es el elemento que rotará al pasar el ratón por encima. */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Sombra para darle profundidad */
+    border-radius: 10px; /* Redondeamos las esquinas */
+}
+
+/* 3. La magia del hover: cuando pasas el ratón por .service-card, .card-inner gira. */
+.service-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 4. Estilos para las dos caras (frontal y trasera).
+   Las posicionamos una encima de la otra y ocultamos la cara que está "detrás". */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Para Safari */
+    backface-visibility: hidden;
+    border-radius: 10px; /* Mismo redondeo que el contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 5. Estilos específicos para la cara FRONTAL */
+.card-front {
+    background: #252525;
+    color: var(--light-text);
+    border-top: 5px solid var(--blue-db);
+}
+
+/* 6. Estilos específicos para la cara TRASERA */
+.card-back {
+    background-color: var(--orange-db);
+    color: white;
+    transform: rotateY(180deg); /* La ponemos ya girada por defecto */
+    padding: 0; /* Quitamos el padding para que la imagen ocupe todo */
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen cubra el espacio sin deformarse */
+    border-radius: 10px; /* Mismo redondeo */
+}
