@@ -37,3 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+const kintonUrl = 'kinton.png'; // Cambia si tu imagen tiene otro nombre o ruta
+
+// Crear el cursor principal
+const kinton = document.createElement('img');
+kinton.src = kintonUrl;
+kinton.className = 'kinton-cursor';
+document.body.appendChild(kinton);
+
+document.addEventListener('mousemove', e => {
+  kinton.style.left = (e.clientX - 24) + 'px';
+  kinton.style.top = (e.clientY - 24) + 'px';
+
+  // Crear el rastro
+  const trail = document.createElement('img');
+  trail.src = kintonUrl;
+  trail.className = 'kinton-trail';
+  trail.style.left = (e.clientX - 16) + 'px';
+  trail.style.top = (e.clientY - 16) + 'px';
+  document.body.appendChild(trail);
+
+  setTimeout(() => trail.remove(), 800); // Elimina el rastro tras la animación
+});

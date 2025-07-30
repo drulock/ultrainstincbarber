@@ -26,7 +26,12 @@
     </header>
 
     <!-- SECCIÓN HERO -->
-    <section class="hero-section parallax-bg" style="background-image: url('https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Paisaje+de+Namek+Aquí');">
+    <section class="hero-section parallax-bg" style="position: relative; overflow: hidden;">
+        <video class="hero-bg-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            <source src="goku.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+        <div style="position: relative; z-index: 1;"></div>
         <div class="hero-content">
             <h1>Desata tu Estilo Final</h1>
             <p>No es solo un corte de pelo, es una transformación.</p>
@@ -37,52 +42,81 @@
     <main>
         <!-- SECCIÓN DE SERVICIOS -->
         <section id="services" class="content-section">
-            <h2 class="section-title">Nuestras <span class="highlight">Transformaciones</span></h2>
-            <div class="services-grid">
-                <div class="service-card">
+    <h2 class="section-title">Nuestras <span class="highlight">Transformaciones</span></h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="card-inner">
+                <div class="card-front">
                     <div class="dragon-ball one-star"></div>
                     <h3>Corte Saiyan</h3>
                     <p>El corte clásico para todo guerrero. Preciso, afilado y listo para la batalla diaria.</p>
                 </div>
-                <div class="service-card">
+                <div class="card-back">
+                    <img src="corte-saiyan.png" alt="Corte Saiyan">
+                </div>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="card-inner">
+                <div class="card-front">
                     <div class="dragon-ball two-stars"></div>
                     <h3>Barba de Maestro Roshi</h3>
                     <p>Un arreglo de barba que impone sabiduría y respeto. Perfilado y cuidado experto.</p>
                 </div>
-                <div class="service-card">
+                <div class="card-back">
+                    <img src="maestro-roshi.png" alt="Barba de Maestro Roshi">
+                </div>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="card-inner">
+                <div class="card-front">
                     <div class="dragon-ball three-stars"></div>
                     <h3>Modo Super Saiyan</h3>
                     <p>Atrévete con una coloración que elevará tu Ki. Del rubio SSJ a los tonos de los Dioses.</p>
                 </div>
-                 <div class="service-card">
+                <div class="card-back">
+                    <img src="super-saiyan.png" alt="Modo Super Saiyan">
+                </div>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="card-inner">
+                <div class="card-front">
                     <div class="dragon-ball four-stars"></div>
                     <h3>Fusión Completa</h3>
                     <p>La combinación definitiva: Corte Saiyan + Arreglo de Barba de Maestro Roshi.</p>
                 </div>
+                <div class="card-back">
+                    <img src="fusion-completa.png" alt="Fusión Completa">
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- SECCIÓN PARALLAX INTERMEDIA -->
-        <section class="parallax-bg" style="background-image: url('https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=Aura+de+Ki+o+Shenron+Aquí');">
-            <div class="parallax-quote">
-                "El poder viene en respuesta a una necesidad, no a un deseo." - Goku
-            </div>
-        </section>
+        
+<section class="parallax-bg" style="background-image: url('atalaya-kami.png');">
+    <div class="parallax-quote">
+        "El poder viene en respuesta a una necesidad, no a un deseo." - Goku
+    </div>
+</section>
 
         <!-- SECCIÓN GALERÍA -->
         <section id="gallery" class="content-section">
             <h2 class="section-title">Nuestros <span class="highlight">Guerreros Z</span></h2>
             <p class="section-subtitle">Clientes que ya alcanzaron su forma final.</p>
             <div class="gallery-grid">
-                <img src="https://via.placeholder.com/400x400/cccccc/000000?text=Corte+1" alt="Corte de pelo moderno 1">
-                <img src="https://via.placeholder.com/400x400/cccccc/000000?text=Corte+2" alt="Corte de pelo moderno 2">
-                <img src="https://via.placeholder.com/400x400/cccccc/000000?text=Corte+3" alt="Corte de pelo moderno 3">
-                <img src="https://via.placeholder.com/400x400/cccccc/000000?text=Corte+4" alt="Corte de pelo moderno 4">
+                <img src="corte1.png" alt="Corte de pelo moderno 1">
+                <img src="corte3.png" alt="Corte de pelo moderno 2">
+                <img src="corte2.png" alt="Corte de pelo moderno 3">
+                <img src="corte4.png" alt="Corte de pelo moderno 4">
             </div>
         </section>
 
         <!-- SECCIÓN CONTACTO -->
-        <section id="contact" class="content-section contact-section">
+        <section id="contact" class="content-section contact-section parallax-bg" style="background-image: url('kame-house2.png');">
             <h2 class="section-title">Contacta con la <span class="highlight">Kame House</span></h2>
             <p class="section-subtitle">Estamos en el centro de la ciudad, ¡no necesitas volar en la Nube Kinton!</p>
             <div class="contact-info">

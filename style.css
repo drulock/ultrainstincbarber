@@ -19,6 +19,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--dark-bg);
     color: var(--light-text);
+    cursor: none;
 }
 
 h1, h2, h3 {
@@ -108,6 +109,8 @@ nav a:hover::after {
 
 /* --- Sección Hero --- */
 .hero-section {
+    position: relative;
+    overflow: hidden;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -115,9 +118,20 @@ nav a:hover::after {
     text-align: center;
 }
 
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.55); /* Ajusta la opacidad para más/menos oscuridad */
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-content h1 {
@@ -182,18 +196,52 @@ nav a:hover::after {
     margin-top: 50px;
 }
 
+/* Tarjeta flip efecto */
 .service-card {
-    background: #252525;
-    padding: 40px 20px;
-    border-radius: 10px;
-    border-top: 5px solid var(--blue-db);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+  width: 260px;
+  height: 340px;
+  margin: 0 auto;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(242, 107, 44, 0.2);
-    border-top-color: var(--orange-db);
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.4,2,.3,1);
+  transform-style: preserve-3d;
+}
+
+.service-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  background: #222;
+  transform: rotateY(180deg);
+  padding: 0;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 .service-card h3 {
@@ -290,6 +338,41 @@ footer {
 .footer-content p:first-child {
     font-size: 3rem;
     color: var(--orange-db);
+}
+
+/* Estilo para la nube Kinton */
+.kinton-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  transition: transform 0.08s linear;
+  will-change: transform;
+}
+
+/* Estilo para el rastro */
+.kinton-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  animation: kinton-fade 0.8s linear forwards;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+.cta-button {
+  cursor: none !important;
+}
+
+@keyframes kinton-fade {
+  to { opacity: 0; transform: scale(1.3);}
 }
 
 /* --- Responsive --- */
