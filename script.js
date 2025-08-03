@@ -60,3 +60,11 @@ document.addEventListener('mousemove', e => {
 
   setTimeout(() => trail.remove(), 800); // Elimina el rastro tras la animación
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.querySelector('nav ul');
+  menuToggle.addEventListener('click', function() {
+    navUl.classList.toggle('open');
+  });
+});
