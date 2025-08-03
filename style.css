@@ -48,7 +48,7 @@ h1, h2, h3 {
     z-index: 1000;
     padding: 0px 32px;
     transition: background-color 0.4s ease;
-    background: rgba(0,0,0,0.85); /* Inicialmente negro y semitransparente */
+    background: #fff;
     backdrop-filter: blur(6px); /* Difumina el fondo para más elegancia */
     transition: none;
 }
@@ -71,33 +71,83 @@ nav {
     color: var(--orange-db);
 }
 
+/* --- Menú superior minimalista y dinámico --- */
 nav ul {
-    list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--light-text);
-    font-weight: 700;
+nav ul li a {
+    width: auto;
+    font-size: 1.5rem;
+    padding: 12px 24px;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Bebas Neue', cursive;
+    color: var(--blue-db);
+    background: transparent;
+    border-radius: 8px;
+    transition: 
+        color 0.25s cubic-bezier(.4,2,.3,1),
+        background 0.25s cubic-bezier(.4,2,.3,1),
+        box-shadow 0.25s cubic-bezier(.4,2,.3,1),
+        transform 0.18s cubic-bezier(.4,2,.3,1);
+    box-shadow: none;
     position: relative;
-    padding-bottom: 5px;
+    letter-spacing: 1px;
 }
 
-nav a::after {
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--orange-db);
+    background: rgba(52,84,167,0.08);
+    box-shadow: 0 2px 16px 0 rgba(52,84,167,0.12);
+    transform: translateY(-2px) scale(1.04);
+    text-shadow: 0 2px 8px rgba(242,107,44,0.18);
+}
+
+nav ul li a::after {
     content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    display: block;
+    margin: 0 auto;
     width: 0;
     height: 2px;
-    background-color: var(--orange-db);
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, var(--gold-ssj), var(--orange-db));
+    transition: width 0.3s cubic-bezier(.4,2,.3,1);
+    border-radius: 2px;
 }
 
-nav a:hover::after {
-    width: 100%;
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 80%;
+}
+
+/* ====== HAMBURGER MENU FOR MOBILE ====== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-left: 16px;
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 4px 0;
+    background: #222;
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
 /* --- Efecto Parallax --- */
@@ -389,15 +439,101 @@ textarea,
 }
 
 /* --- Responsive --- */
-@media (max-width: 768px) {
-    #main-header {
-        padding: 15px 20px;
+/* Oculta el menú en móvil por defecto */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: flex;
     }
     nav ul {
-        display: none; /* Simplificar para móviles o implementar menú hamburguesa */
+        display: none !important; /* Oculta el menú antiguo siempre en móvil */
+        position: fixed;
+        top: 0; /* Asegura que el menú móvil esté pegado arriba */
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.97);
+        flex-direction: column;
+        gap: 0;
+        padding: 0; /* Elimina cualquier padding extra */
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        z-index: 1001;
+        align-items: center;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        transform: none;
+        margin-top: 0 !important;
+    }
+    nav ul.open {
+        display: flex !important;
+        position: fixed;
+        top: 0; /* Pegado arriba, sin padding extra */
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.97);
+        flex-direction: column;
+        gap: 0;
+        padding: 24px 0 0 0; /* Solo padding-top si quieres espacio para el header */
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        z-index: 1001;
+        align-items: center;
+        text-align: center;
+        visibility: visible;
+        opacity: 1;
+        margin-top: 0 !important;
+    }
+    nav ul li {
+        width: 100%;
+        margin: 12px 0;
+        display: flex;
+        justify-content: center;
+    }
+    nav ul li a {
+        font-size: 1.3rem;
+        padding: 14px 8px;
+        border-radius: 10px;
     }
     .content-section {
-        padding: 60px 20px;
+        padding: 48px 12px;
+        border-radius: 10px;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #main-header {
+        height: 64px;
+        padding: 0 8px;
+    }
+    .logo img {
+        width: 48px;
+        max-height: 48px;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-card {
+        max-width: 98vw;
+    }
+    .hero-content {
+        padding: 24px 8px;
+    }
+    .hero-section,
+    .content-section {
+        padding-top: 80px;
+    }
+    nav ul {
+        top: 64px !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    nav ul.open {
+        top: 0; /* Pegado arriba */
+        padding-top: 64px; /* Espacio para el header fijo */
     }
 }
 
