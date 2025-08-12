@@ -16,18 +16,25 @@
 
     <header id="main-header">
         <nav>
-            <div class="logo"><img src="logo.png" alt="Saiyan Styles Logo"></div>
-            <button class="menu-toggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul>
-                <li><a href="#services">Transformaciones</a></li>
-                <li><a href="#gallery">Guerreros</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
+    <div class="logo"><img src="logo.png" alt="Saiyan Styles Logo"></div>
+    <div class="audio-control">
+        <span class="audio-label">Música (click mute)</span>
+        <button id="audio-toggle" aria-label="Pausar música" class="audio-btn">
+            <span id="audio-icon">🔊</span>
+        </button>
+        <audio id="db-audio" src="videoplayback.mp3" loop preload="auto"></audio>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul>
+        <li><a href="#services">Transformaciones</a></li>
+        <li><a href="#gallery">Guerreros</a></li>
+        <li><a href="#contact">Contacto</a></li>
+    </ul>
+</nav>
     </header>
 
     <!-- SECCIÓN HERO -->

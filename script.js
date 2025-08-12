@@ -61,10 +61,50 @@ document.addEventListener('mousemove', e => {
   setTimeout(() => trail.remove(), 800); // Elimina el rastro tras la animación
 });
 
+// Música Dragon Ball
+    const audio = document.getElementById('db-audio');
+    const audioBtn = document.getElementById('audio-toggle');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+
+    function playAudio() {
+        audio.play().then(() => {
+            isPlaying = true;
+            audioIcon.textContent = '🔊';
+        }).catch(() => {
+            // Autoplay bloqueado, esperar interacción
+        });
+    }
+
+    // Intentar reproducir al cargar (algunos navegadores lo bloquearán)
+    playAudio();
+
+    // Reproducir tras la primera interacción del usuario
+    function enableAudioOnInteraction() {
+        if (!isPlaying) {
+            playAudio();
+        }
+        document.removeEventListener('click', enableAudioOnInteraction);
+    }
+    document.addEventListener('click', enableAudioOnInteraction);
+
+    // Botón de control
+    audioBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita doble trigger
+        if (isPlaying) {
+            audio.pause();
+            audioIcon.textContent = '🔈';
+        } else {
+            playAudio();
+        }
+        isPlaying = !isPlaying;
+    });
+
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navUl = document.querySelector('nav ul');
   menuToggle.addEventListener('click', function() {
     navUl.classList.toggle('open');
+    
   });
 });

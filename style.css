@@ -608,3 +608,49 @@ textarea,
     object-fit: cover; /* Hace que la imagen cubra el espacio sin deformarse */
     border-radius: 10px; /* Mismo redondeo */
 }
+
+/* Añade esto a tu style.css */
+/* ...existing code... */
+.audio-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 18px;
+}
+.audio-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--orange-db, #F26B2C);
+    letter-spacing: 1px;
+    user-select: none;
+}
+.audio-btn {
+    background: none;
+    border: none;
+    font-size: 1.7rem;
+    color: var(--orange-db, #F26B2C);
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+.audio-btn:hover {
+    color: var(--blue-db, #3454A7);
+}
+@media (max-width: 900px) {
+    .audio-control {
+        margin-left: 10px;
+    }
+    .audio-label {
+        font-size: 1.1rem;
+    }
+    .audio-btn {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 600px) {
+    .audio-label {
+        display: none;
+    }
+}
+/* ...existing code... */
